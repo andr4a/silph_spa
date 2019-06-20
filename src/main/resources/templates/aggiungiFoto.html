@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Aggiungi Foto</title>
+    
+    <!-- BOOTSTRAP - Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+	
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+	
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script> 
+	
+</head>
+<body>
+	<div align="center">
+	<h1>Ciao Admin <span th:utext="${username}"></span>!</h1>
+	<div>
+		<h4>Inserisci i dati di uno studente</h4>
+	</div>
+	  <form th:action="@{/visualizzaFoto}" method="POST" th:object="${foto}">
+		<table>
+			<tr>
+				<td>Fotografo:</td>
+				<td><input type="text" th:field="*{fotografo}" /></td>
+				</br>
+			</tr>
+			<tr>
+				<td>Titolo:</td>	
+				<td><input type="text" th:field="*{titolo}" /></td>
+				</br>
+			</tr>
+			<tr>
+				<td>Album:</td>
+				<td><input type="text" th:field="*{album}" /></td>
+				</br>
+			</tr>
+			<tr>
+				<td>Immagine (inserire una url copiando location immagine dal browser):</td>
+				<td><input type="text" th:field="*{url}" /></td>
+			</tr>
+				</br>
+			<tr>
+				<td>
+					<button type="submit">Invio</button>
+				</td>
+			</tr>
+		</table>
+	</form>
+	</div>
+</body>
+</html>

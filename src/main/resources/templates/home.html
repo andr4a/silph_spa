@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+	<head>
+	<meta charset="UTF-8">
+    <title>SILPH</title>
+	
+	<!-- BOOTSTRAP - Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+	
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+	
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script> 
+	
+	</head>
+
+	<body>
+		<header>
+		  <div class="navbar navbar-dark bg-dark shadow-sm">
+		    <div class="container d-flex justify-content-between">
+		      <a href="/login" class="navbar-brand d-flex align-items-center">
+		        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" class="mr-2" viewBox="0 0 24 24" focusable="false"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+		        <strong>Accedi come configuratore</strong>
+		      </a>
+		      <div align="right">
+		      <a  href="/inserisciRichiesta" class="navbar-brand d-flex align-items-right">
+		        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" class="mr-2" viewBox="0 0 24 24" focusable="false"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+		        <strong>Scarica foto richieste</strong>
+		      </a>
+		      </div>
+		    </div>
+		  </div>
+		</header>
+		
+		<main role="main">
+		  <section style="background-image: url('https://cdn.pixabay.com/photo/2014/07/02/08/30/images-381937_960_720.jpg')" class="jumbotron text-center">
+		    <div style="background-color: rgba(255, 255, 255, 0.57)" class="container">
+		      <h1 style="color:black;font:bold" class="jumbotron-heading">SILPH</h1>
+		      <p style="color:black;font:bold" class="lead text-muted">Scegli le foto che più ti piacciono e compila la richiesta per il download</p>
+		    </div>
+		  </section>
+		
+		  <div class="album py-5 bg-light">
+		    <div class="container">
+		
+		      <div class="row">
+		      
+		      	<h4>Filtra per fotografo</h4>
+		      	<ul th:each="fotografo : ${fotografi}">	      	
+		      		<li> <a th:href="@{'/byFotografo/' + ${fotografo}}"  th:text="${fotografo}"></a></li>	      			
+		      	</ul>
+		      	
+		      	
+		      	<h4>Filtra per album</h4>
+		      	<ul th:each="album : ${albums}">	      	
+		      		<li> <a th:href="@{'/byAlbum/' + ${album}}"  th:text="${album}"></a></li>	      			
+		      	</ul>
+		      	
+		      <div th:each="foto : ${fotos}" class="col-md-4">
+		      	</br>
+		          <div class="card mb-4 shadow-sm">
+		            <img class="bd-placeholder-img card-img-top" width="100%" height="225" th:src="${foto.url}"  role="img"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/></img>
+		            <div class="card-body">
+		              <p class="card-text" th:text="'Titolo:' + ${foto.titolo} + ' Album:' + ${foto.album} + ' Fotografo:' + ${foto.fotografo}"></p>
+		              <div class="d-flex justify-content-between align-items-center">
+		                <div class="btn-group">
+		                 <a th:href="@{'/aggiungiRichiesta/' + ${foto.id}}" >Download</a>             
+	                  	 </br>
+	                  </div>		    
+		              </div>
+		            </div>
+		          </div>
+		        </div> 
+		       
+		      </div>
+		    </div>
+		  </div>
+		
+		</main>
+		
+		<footer class="text-muted">
+		  <div class="container">
+		    
+		    </br>
+		    </br>		    
+	    	<a href="#">Back to Top</a>
+		    
+		  </div>
+		</footer>
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+		      <script>window.jQuery || document.write('<script src="/docs/4.3/assets/js/vendor/jquery-slim.min.js"><\/script>')</script><script src="/docs/4.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script>
+
+	</body>
+</html>
